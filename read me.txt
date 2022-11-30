@@ -1,0 +1,19 @@
+The code is written in MATLAB, we usually run the code on MATLAB R2021a and in windows 10 operation system.
+The package contains two functions,detail instructions are described below.
+(1)
+Function name : seqAll = findBindingSequences(positionGet, PAO1, sequenceLength,dirSave)
+Description of the function: this function extract DNA sequences near SNP sites in the PAO1 genome. We usually listed all the SNPs obtained through genome sequencing in the nx1 vector positionGet. 
+The generated text file is named 'mutationSeqInfo.txt'and saved in the custom-defined dirSave folder. This 'mutationSeqInfo.txt' file can be directly uploaded to the MEME website, and users can then 
+obtain TF binding motifs using MEME. sequenceLength is a varialbe that define the length of the retrieved sequence, usually set as 200, that is, 100 bp upstream and 100 bp downstream of the SNP site.
+PAO1 is a matrix that downloaded from the PAO1 database that was already included in the package £¨PAO1_fasta_annotation£©. Before using this function, users should drag the PAO1 file into MATLAB workspace.
+
+(2)
+Function name: [outPutLogic,locusTagGet,locusTagGet2,promoterStateGet] = promoterDecision(positionGet,PAO1)
+Description of the function: this function determine whether a SNP is situated at the promoter region of a gene. The input variable 'positionGet' is an nx1 vector contains positions of SNPs in the genome. 
+The output varialbe 'promoterStateGet' is also an nx1 vector that describe the state of corresponding SNPs in 'positionGet'. There are five cases in 'promoterStateGet':
+case 1#, promoterStateGet=1, the corresponding SNP is situated in a forward promoter;
+case 2#, promoterStateGet=2, the corresponding SNP is situated in a reverse promoter;
+case 3#, promoterStateGet=3, the corresponding SNP is situated in a bi-directional promoter;
+case 4#, promoterStateGet=4, the corresponding SNP is situated in a non-promoter intergenic region;
+case 5#, promoterStateGet=0, the corresponding SNP is situated in a coding sequence;
+PAO1 is a matrix that downloaded from the PAO1 database that was already included in the package £¨PAO1_fasta_annotation£©. Before using this function, users should drag the PAO1 file into MATLAB workspace.
